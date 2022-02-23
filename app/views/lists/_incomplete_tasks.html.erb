@@ -1,0 +1,36 @@
+<% list = @list if @list.present? %>
+<% if tasks.size > 0 %>
+  <p class="mb-3 font-semibold mt-6">Incompleted tasks</p>
+<% end %>
+<ul class="mb-6">
+  <% tasks.each do |task| %>
+    <li class="mb-2" data-controller="task">
+      <%= turbo_frame_tag dom_id(task) do %>
+        <div class="flex gap-4 items-start">
+          <div class="flex-none" >
+            <input type="checkbox"
+                    data-action="task#updateStatus"
+                    data-task-target="complete"
+                    data-task-list-value="<%= list.id %>"
+                    data-task-task-value="<%= task.id %>"
+                    <% if task.complete? %> checked <% end %> >
+          </div>
+
+          <div class="flex-1"><%= task.description %></div>
+          <div class="flex space-x-2">
+            <span class="text-sm">
+              <%= link_to "Edit", edit_list_task_path(list_id: list.id, id: task.id) %>
+            </span>
+            <span class="text-sm">
+              <%= button_to "Delete",
+                            list_task_path(list, task),
+                            method: :delete,
+                            class: 'text-red-500 hover:text-red-600 text-sm underline hover:no-underline',
+                            form: { data: { turbo_confirm: "Are you sure?" }  }%>
+            </span>
+          </div>
+        </div>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

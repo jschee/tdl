@@ -1,0 +1,26 @@
+<% list = @list if @list.present? %>
+<% if tasks.size > 0 %>
+  <p class="mb-3 font-semibold mt-6">Completed tasks</p>
+<% end %>
+<ul class="mb-6">
+  <% tasks.complete.each do |task| %>
+    <li class="mb-2" data-controller="task">
+      <div class="flex gap-4 items-start">
+        <div class="flex-none">
+          <div class="flex-none">
+            <input type="checkbox"
+                    data-action="task#updateStatus"
+                    data-task-target="complete"
+                    data-task-list-value="<%= list.id %>"
+                    data-task-task-value="<%= task.id %>"
+                    <% if task.complete? %> checked <% end %> >
+          </div>
+
+        </div>
+        <div class="flex-1"><%= task.description %></div>
+      </div>
+    </li>
+  <% end %>
+</ul>
+
+

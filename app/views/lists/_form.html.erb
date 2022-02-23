@@ -1,0 +1,15 @@
+<%= form_with(model: list, url: lists_path, method: :post, data: { turbo: false }) do |form| %>
+  <div class="mb-4" id="name">
+    <%= form.label :name, "Give your to-do list a name" %>
+    <%= form.text_field :name, class:'border p-2 w-full', placeholder: "i.e. 'Super Bowl festivities' " %>
+  </div>
+  <div class="flex items-center">
+    <%= form.button class: "btn-primary" do %>
+      <span class="show-when-enabled">
+        <%= list.new_record? ? "Create to-do list" : "Update to-do list" %>
+      </span>
+      <span class="show-when-disabled">Creating...</span>
+    <% end %>
+    <a href="/" class="text-sm ml-4">Nevermind, take me back</a>
+  </div>
+<% end %>

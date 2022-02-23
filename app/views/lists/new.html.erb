@@ -1,0 +1,9 @@
+<div class="max-w-lg mx-auto border min-h-screen p-4 bg-white">
+  <div class="flex border-b pb-2 mb-4">
+    <p class="text-xl">Create a new to-do list</p>
+  </div>
+  <div>
+    <%= render 'shared/errors', obj: @list %>
+    <%= render 'form', list: @list %>
+  </div>
+</div>

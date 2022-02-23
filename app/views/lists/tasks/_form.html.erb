@@ -1,0 +1,29 @@
+<%= form_with(model: @list, url: list_tasks_path, method: :post, data: { controller: 'nested-form',
+                                                                         nested_form_wrapper_selector_value: '.nested-form-wrapper',
+                                                                         turbo: false }) do |form| %>
+  <template data-nested-form-target="template">
+    <%= form.fields_for :tasks, Task.new, child_index: 'NEW_RECORD' do |task_fields| %>
+      <%= render "task_form", f: task_fields %>
+    <% end %>
+  </template>
+
+  <%= form.fields_for :tasks do |task_fields| %>
+    <%= render 'task_form', f: task_fields %>
+  <% end %>
+
+  <div data-nested-form-target="target"></div>
+
+  <button class="btn-secondary" type="button" data-action="nested-form#add">
+    &plus; Add a task
+  </button>
+
+  <div class="flex items-center hidden mt-4" id="submit-task">
+    <%= form.button class: "btn-primary" do %>
+      <span class="show-when-enabled">
+        Save to to-do list
+      </span>
+      <span class="show-when-disabled">Saving...</span>
+    <% end %>
+    <a href="/" class="text-sm ml-4">Nevermind, take me back</a>
+  </div>
+<% end %>

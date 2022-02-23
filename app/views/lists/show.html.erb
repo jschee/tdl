@@ -1,0 +1,20 @@
+<div class="max-w-lg mx-auto border min-h-screen p-4 bg-white">
+  <header class="flex justify-between items-center mb-4 border-b pb-2">
+    <p class="text-xl"><%= @list.name %></p>
+    <p class="text-sm">Created on <%= @list.created_at.strftime("%b %d, %Y") %></p>
+  </header>
+  <%= turbo_stream_from @list, :tasks %>
+  <div id="incomplete-tasks">
+    <%= render 'incomplete_tasks', list: @list, tasks: @list.tasks.where(status: "incomplete") %>
+  </div>
+
+
+  <div id="complete-tasks">
+    <%= render 'complete_tasks', list: @list, tasks: @list.tasks.where(status: "complete") %>
+  </div>
+
+  <div class="flex items-center">
+    <%= link_to 'Create tasks', new_list_task_path(@list), class: "btn-primary no-underline hover:text-white" %>
+    <%= link_to 'Back to your to-dos', lists_path, class: "ml-3" %>
+  </div>
+</div>

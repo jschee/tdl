@@ -1,0 +1,7 @@
+<%= turbo_stream.update "incomplete-tasks" do %>
+  <%= render 'lists/incomplete_tasks', list: @list, tasks: @list.tasks.where(status: "incomplete") %>
+<% end %>
+
+<%= turbo_stream.update "complete-tasks" do %>
+  <%= render 'lists/complete_tasks', list: @list, tasks: @list.tasks.where(status: "complete") %>
+<% end %>

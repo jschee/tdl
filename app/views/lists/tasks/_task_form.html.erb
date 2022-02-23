@@ -1,0 +1,15 @@
+<div class="nested-form-wrapper" data-new-record="<%= f.object.new_record? %>" data-controller="description">
+  <div class="mb-4">
+    <div class="flex justify-between items-center">
+      <%= f.label :description %>
+      <div>
+        <button class="text-xs text-red-500" type="button" data-action="nested-form#remove">
+          Remove
+        </button>
+      </div>
+    </div>
+    <%= f.text_field :description, class:'border p-2 w-full', required: true, data: { action: 'input->description#showSubmit' } %>
+  </div>
+
+  <%= f.hidden_field :_destroy %>
+</div>

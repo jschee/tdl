@@ -1,0 +1,12 @@
+<div class="max-w-lg mx-auto border min-h-screen p-4 bg-white">
+  <div class="flex justify-between items-center mb-4 border-b pb-2">
+    <div>
+      <p class="text-xl">Create tasks</p>
+      <p class="text-sm text-gray-400">to-do · <%= @list.name %></p>
+    </div>
+  </div>
+  <div>
+    <%= render 'shared/errors', obj: @task %>
+    <%= render 'form', task: @task %>
+  </div>
+</div>

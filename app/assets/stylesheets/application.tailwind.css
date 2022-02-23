@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size:  110%;
+}
+
+.field_with_errors {
+  @apply bg-green-600 p-1 w-full
+}
+
+.field_with_errors label {
+  @apply text-white
+}
+
+button .show-when-enabled {
+  display: initial;
+}
+button .show-when-disabled {
+  display: none;
+}
+button[disabled] .show-when-enabled {
+  display: none;
+}
+button[disabled] .show-when-disabled {
+  display: initial;
+}
+
+input { @apply text-black }
+
+a { @apply text-blue-400 underline hover:text-blue-500 hover:no-underline }
+
+.btn-primary { @apply rounded bg-green-600 hover:bg-green-700 focus:outline-none focus:ring focus:ring-green-600 text-white px-3 py-2 }
+
+.btn-secondary { @apply rounded bg-white border border-green-600 hover:border-green-700 focus:outline-none focus:ring focus:ring-green-600 text-green-600 hover:text-green-700 px-3 py-2 }
+
+/*turbo-frame {
+  display:  block;
+  border:  1px solid crimson;
+}*/
+
+.bg-tan {
+  background: #FBF7F0
+}

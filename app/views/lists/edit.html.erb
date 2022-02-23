@@ -1,0 +1,16 @@
+<%= turbo_frame_tag dom_id(@list) do %>
+  <%= form_with(model: @list, url: list_path(@list), method: :patch) do |form| %>
+    <div class="flex items-center">
+      <div class="flex-1">
+        <%= form.text_field :name, class:'border px-2 w-full' %>
+      </div>
+      <%= form.button class: "btn-primary text-sm ml-2" do %>
+        <span class="show-when-enabled">
+          Update
+        </span>
+        <span class="show-when-disabled">Updating...</span>
+      <% end %>
+      <%= link_to "Cancel", lists_path, class: "ml-2 text-sm", data: { "turbo_frame": "_top" }  %>
+    </div>
+  <% end %>
+<% end %>

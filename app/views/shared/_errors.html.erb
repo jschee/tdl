@@ -1,0 +1,12 @@
+<% if obj.errors.any? %>
+  <div class="border-red border rounded p-2 mb-4">
+    <p class="text-xs font-semibold mb-2 text-green-600">There was a problem</p>
+    <ul>
+      <% obj.errors.each do |msg| %>
+        <a href="#<%= msg.attribute.to_s %>">
+          <li class="text-sm"><%= msg.full_message %></li>
+        </a>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

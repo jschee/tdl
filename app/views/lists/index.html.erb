@@ -1,0 +1,19 @@
+<%= turbo_stream_from "lists" %>
+<div class="max-w-lg mx-auto border min-h-screen p-4 bg-white">
+  <div class="flex justify-between items-center mb-4 border-b pb-2">
+    <p class="text-xl">Your to-dos</p>
+    <p class="text-sm">Today is <%= Time.now.strftime("%b %d, %Y") %></p>
+  </div>
+  <% if @lists.present? %>
+    <div id="lists">
+      <%= render @lists %>
+    </div>
+    <%= link_to new_list_path, class: "btn-primary no-underline hover:text-white" do %>
+      Create a new to-do
+    <% end %>
+  <% else %>
+    <div class="mt-6">
+      <%= link_to "Create a to-do", new_list_path, class: "btn-primary no-underline hover:text-white" %>
+    </div>
+  <% end %>
+</div>
