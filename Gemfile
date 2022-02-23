@@ -24,7 +24,6 @@ group :development do
   gem "web-console"
   gem "hotwire-livereload"
   gem "redis", "~> 4.0"
-  gem "rack-mini-profiler"
 end
 
 group :test do
