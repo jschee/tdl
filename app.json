@@ -1,0 +1,11 @@
+ {
+    "name": "tdl",
+    "description": "launch",
+    "keywords": [
+    ],
+    "scripts": {
+      "dokku": {
+        "predeploy": "bundle exec rake db:migrate"
+      }
+    }
+  }

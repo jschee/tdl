@@ -8,16 +8,7 @@ class Task < ApplicationRecord
   validates :status, inclusion: { in: statuses.keys, message: :invalid }
 
   # before_save :initialize_position, if: Proc.new { |task| task.list.tasks.empty? }
-  before_save :check_for_status_change
-
-  after_destroy_commit do
-    broadcast_update_to(list,
-                        :tasks,
-                        target: 'complete-tasks',
-                        partial: 'lists/complete_tasks',
-                        locals: { list: list,
-                                  tasks: list.tasks.complete })
-  end
+  # before_save :check_for_status_change
 
   after_destroy_commit do
     broadcast_update_to(list,
