@@ -1,6 +1,6 @@
 # Getting started
 
-## Requirements
+### Requirements
 
 * rails 7.0.2.2
 * ruby 3.0.0
@@ -8,6 +8,8 @@
 * yarn – `brew install yarn`
 * redis – `brew install redis`
 * foreman – `gem install foreman`
+
+### Installation
 
 `bin/rails bundle install --no-upgrade`
 
